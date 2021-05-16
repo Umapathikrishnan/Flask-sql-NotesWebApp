@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>my notes</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/notes.css') }}">
+
+</head>
+<body>
+     <!-- task form -->
+     <h2>Add Note</h2>
+     
+        <form action="/addnote"  method="post">
+       <input type="text" name="category" placeholder="category" class="category"/>
+       <textarea type="text" name="task" class="task" placeholder="task"></textarea>
+       <button type="submit" id="add_btn">Add Note</button>
+        </form>
+        <button id="display_btn"><a href="/display">All Notes</a></button>
+        <form action="/deletebycategory" method="POST">
+            <input type="text" name="del_category"  placeholder="category">
+            <button type="submit" id="delete"><a href="/display">DELETE</a></button>
+        </form>
+        
+       
+<p>{{msg}}</p>
+        <!--displaying  all notes-->
+
+ {% for i in mynotes %}
+ <div class="container">
+    <h4>{{i[1]}}</h4>
+    <p>{{i[2]}}</p>
+ </div>
+ 
+ {% endfor %}
+</body>
+</html>
